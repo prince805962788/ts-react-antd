@@ -1,7 +1,8 @@
 import React from 'react';
 import './styles/index.scss';
 import Button, { ButtonType,ButtonSize} from './components/Button/button'
-
+import Menu from './components/Menu/menu'
+import menuItem from './components/Menu/menuItem'
 function App() {
   return (
     <div className="App">
