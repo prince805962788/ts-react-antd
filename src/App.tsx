@@ -8,7 +8,7 @@ function App() {
   return (
     <div className="App">
       <header className="App-header">
-        <Menu defaultIndex={0} onSelect={(index) => { console.log(index) }}>
+        <Menu defaultIndex={'0'} onSelect={(index) => { console.log(index) }}>
           <MenuItem>cool link</MenuItem>
           <MenuItem disabled>cool link2</MenuItem>
           <SubMenu title="下拉选项">
@@ -20,7 +20,7 @@ function App() {
             </MenuItem>
           </SubMenu>
         </Menu>
-        <Menu defaultIndex={0} onSelect={(index) => { console.log(index) }} mode='vertical'>
+        <Menu defaultIndex={'0'} onSelect={(index) => { console.log(index) }} mode='vertical' defaultOpenSubMenus={['3']}>
           <MenuItem>
             cool link
           </MenuItem>
@@ -44,7 +44,7 @@ function App() {
         <Button btnType={ButtonType.Danger} size={ButtonSize.Large}>Hello</Button>
         <Button btnType={ButtonType.Link} size={ButtonSize.Small} href='www.baidu.com' target="_blank">Link</Button>
       </header>
-    </div>
+    </div >
   );
 }
 
