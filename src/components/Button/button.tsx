@@ -1,21 +1,12 @@
 import React from 'react'
 import classnames from 'classnames'
 
-export enum ButtonSize {
-  Large = 'lg',
-  Small = 'sm'
-}
-
-export enum ButtonType {
-  Primary = 'primary',
-  Default = 'default',
-  Danger = 'danger',
-  Link = 'link'
-}
+export type ButtonSize = 'lg' | 'sm'
+export type ButtonType = 'primary' | 'default' | 'danger' | 'link'
 
 interface BaseButtonProps {
   className?: string;
-  disabled?:boolean;
+  disabled?: boolean;
   size?: ButtonSize;
   btnType?: ButtonType;
   children?: React.ReactNode,
@@ -27,7 +18,7 @@ type NativeButtonProps = BaseButtonProps & React.ButtonHTMLAttributes<HTMLElemen
 type AnchorButtonProps = BaseButtonProps & React.AnchorHTMLAttributes<HTMLElement>
 //Partial里面的属性都为可选
 export type ButtonProps = Partial<NativeButtonProps & AnchorButtonProps>
-const Button: React.FC<ButtonProps> = (props) =>{
+const Button: React.FC<ButtonProps> = (props) => {
   const {
     btnType,
     className,
@@ -37,14 +28,14 @@ const Button: React.FC<ButtonProps> = (props) =>{
     href,
     ...restProps
   }
-   = props
+    = props
   //btn,btn-lg,btn-primary
-  const classes = classnames('btn',className,{
+  const classes = classnames('btn', className, {
     [`btn-${btnType}`]: btnType,
     [`btn-${size}`]: size,
-    'disable': (btnType === ButtonType.Link) && disabled
+    'disable': (btnType === 'link') && disabled
   })
-  if(btnType === ButtonType.Link && href){
+  if (btnType === 'link' && href) {
     return (
       <a
         className={classes}
@@ -54,7 +45,7 @@ const Button: React.FC<ButtonProps> = (props) =>{
         {children}
       </a>
     )
-  }else{
+  } else {
     return (
       <button
         className={classes}
@@ -69,7 +60,7 @@ const Button: React.FC<ButtonProps> = (props) =>{
 
 Button.defaultProps = {
   disabled: false,
-  btnType: ButtonType.Default
+  btnType: 'default'
 }
 
 export default Button

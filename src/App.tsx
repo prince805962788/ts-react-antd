@@ -1,6 +1,6 @@
 import React from 'react';
 import './styles/index.scss';
-import Button, { ButtonType, ButtonSize } from './components/Button/button'
+import Button from './components/Button/button'
 import Menu from './components/Menu/menu'
 import MenuItem from './components/Menu/menuItem'
 import SubMenu from './components/Menu/subMenu'
@@ -45,9 +45,9 @@ function App() {
           </SubMenu>
         </Menu>
         <Button onClick={() => { console.log('this is button') }}>Prince</Button>
-        <Button disabled size={ButtonSize.Small}>PrinceLee</Button>
-        <Button btnType={ButtonType.Danger} size={ButtonSize.Large}>Hello</Button>
-        <Button btnType={ButtonType.Link} size={ButtonSize.Small} href='www.baidu.com' target="_blank">Link</Button>
+        <Button disabled size='sm'>PrinceLee</Button>
+        <Button btnType='danger' size='lg'>Hello</Button>
+        <Button btnType='link' size='sm' href='www.baidu.com' target="_blank">Link</Button>
       </header>
     </div >
   );
