@@ -1,14 +1,16 @@
-import React from 'react';
+import React, { useState } from 'react';
+import { library } from '@fortawesome/fontawesome-svg-core'
+import { fas } from '@fortawesome/free-solid-svg-icons'
 import './styles/index.scss';
 import Button from './components/Button/button'
 import Menu from './components/Menu/menu'
 import MenuItem from './components/Menu/menuItem'
 import SubMenu from './components/Menu/subMenu'
 import Icon from './components/Icon/icon'
-import { library } from '@fortawesome/fontawesome-svg-core'
-import { fas } from '@fortawesome/free-solid-svg-icons'
+import Input from './components/Input/input'
 library.add(fas)
 function App() {
+  const [value, setValue] = useState('')
   return (
     <div className="App">
       <header className="App-header">
@@ -48,6 +50,7 @@ function App() {
         <Button disabled size='sm'>PrinceLee</Button>
         <Button btnType='danger' size='lg'>Hello</Button>
         <Button btnType='link' size='sm' href='www.baidu.com' target="_blank">Link</Button>
+        <Input value={value} size="sm" icon="coffee" prepend='name' onChange={e => setValue(e.target.value)}></Input>
       </header>
     </div >
   );

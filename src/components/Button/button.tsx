@@ -1,5 +1,5 @@
 import React from 'react'
-import classnames from 'classnames'
+import classNames from 'classnames'
 
 export type ButtonSize = 'lg' | 'sm'
 export type ButtonType = 'primary' | 'default' | 'danger' | 'link'
@@ -30,7 +30,7 @@ const Button: React.FC<ButtonProps> = (props) => {
   }
     = props
   //btn,btn-lg,btn-primary
-  const classes = classnames('btn', className, {
+  const classes = classNames('btn', className, {
     [`btn-${btnType}`]: btnType,
     [`btn-${size}`]: size,
     'disable': (btnType === 'link') && disabled
