@@ -8,9 +8,29 @@ import MenuItem from './components/Menu/menuItem'
 import SubMenu from './components/Menu/subMenu'
 import Icon from './components/Icon/icon'
 import Input from './components/Input/input'
+import AutoComplete, { DataSourceType } from './components/AutoComplete/autoComplete'
 library.add(fas)
 function App() {
   const [value, setValue] = useState('')
+  const handleFetch = (query: string): Promise<DataSourceType[]> => {
+    return new Promise((resolve, reject) => {
+      const AutoCompleteList = [
+        { value: '1' },
+        { value: '11' },
+        { value: '111' },
+      ]
+      setTimeout(() => {
+        resolve(AutoCompleteList.filter(item => item.value.includes(query)))
+      }, 300)
+    })
+  }
+  const renderOption = (item: DataSourceType) => {
+    return (
+      <h2>
+        name:{item.value}
+      </h2>
+    )
+  }
   return (
     <div className="App">
       <header className="App-header">
@@ -51,6 +71,11 @@ function App() {
         <Button btnType='danger' size='lg'>Hello</Button>
         <Button btnType='link' size='sm' href='www.baidu.com' target="_blank">Link</Button>
         <Input value={value} size="sm" icon="coffee" prepend='name' onChange={e => setValue(e.target.value)}></Input>
+        <AutoComplete
+          fetchSuggestions={(keyword) => handleFetch(keyword)}
+          onSelect={(item: DataSourceType) => { console.log(item) }}
+          renderOption={renderOption}
+        />
       </header>
     </div >
   );
