@@ -1,4 +1,5 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
+import axios from 'axios'
 import { library } from '@fortawesome/fontawesome-svg-core'
 import { fas } from '@fortawesome/free-solid-svg-icons'
 import './styles/index.scss';
@@ -9,6 +10,7 @@ import SubMenu from './components/Menu/subMenu'
 import Icon from './components/Icon/icon'
 import Input from './components/Input/input'
 import AutoComplete, { DataSourceType } from './components/AutoComplete/autoComplete'
+import Upload, { UploadProps } from './components/upload/upload'
 library.add(fas)
 function App() {
   const [value, setValue] = useState('')
@@ -31,9 +33,21 @@ function App() {
       </h2>
     )
   }
+  const uploadSuccess = (data: any, file: File) => {
+    console.log('data:', data)
+    console.log('file:', file)
+  }
+  const uploadProgress = (percent: Number, file: File) => {
+    console.log('percent:', percent)
+  }
   return (
     <div className="App">
       <header className="App-header">
+        <Upload
+          action="https://jsonplaceholder.typicode.com/posts"
+          onSuccess={uploadSuccess}
+          onProgress={uploadProgress}
+        ></Upload>
         <Icon icon="coffee" theme="danger" size="6x"></Icon>
         <Menu defaultIndex={'0'} onSelect={(index) => { console.log(index) }}>
           <MenuItem>cool link</MenuItem>
